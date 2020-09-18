@@ -1,5 +1,6 @@
 package GLI.TP1;
 
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.JFrame;
@@ -14,9 +15,9 @@ public class App
     		JFrame window = new JFrame();
     		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     		window.setBounds(30, 30, 400, 400);
-    		
+    		window.setMinimumSize(new Dimension(750, 600));
     		// Create an instance of the model
-            // Model model;
+             CamembertModel model;
             
             // Maybe put some data in the model
     		int oldFirst = 0;

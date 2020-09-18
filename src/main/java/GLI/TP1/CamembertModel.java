@@ -33,6 +33,10 @@ public class CamembertModel implements ICamembertModel{
 	this.items.add(i);	
 	}
 	
+	public void removeItem(Item i) {
+		this.items.remove(i);	
+		}
+	
 	public int size() {
 	return this.items.size();
 	}
@@ -46,23 +50,19 @@ public class CamembertModel implements ICamembertModel{
 		
 	}
 	
-	public Double getValues(Item i) {
-		//TODO
-		return 0.0; 
+	public Double getValues(int i) {
+		return this.items.get(i).getValue();
 	}
 	
 	
-	public String getTitle(Item i) {
-		return i.getTitle();
+	public String getTitle(int i) {
+		return  this.items.get(i).getTitle();
 	}
 	
-	public String getDescription(Item i) {
-		return i.getDesciption();
+	public String getDescription(int i) {
+		return  this.items.get(i).getDesciption();
 	}
 	
-	public void addObserver() {
-		
-		//TODO
-	}
+	
 	
 }
