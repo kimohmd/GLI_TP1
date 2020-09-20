@@ -9,6 +9,12 @@ public class CamembertModel implements ICamembertModel{
 	
 	private ArrayList<Item> items;
 	
+	public CamembertModel (String t, String u) {
+		this.title = t;
+		this.unit = u;
+		this.items = new ArrayList<Item>();
+	}
+	
 	public String getTitle() {
 		return title;
 	}

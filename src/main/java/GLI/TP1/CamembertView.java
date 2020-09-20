@@ -71,10 +71,15 @@ public class CamembertView extends JComponent implements MouseListener,
 	Arc2D center;
 
 	// a link to the controller interface
-	ICamembertController controller;
+	public ICamembertController controller;
 
 	// a link to the Model interface 
-	ICamembertModel model;
+	public ICamembertModel model;
+
+	public ICamembertModel getModel() {
+		return model;
+	}
+
 
 	double startingAngle;
 
@@ -108,6 +113,7 @@ public class CamembertView extends JComponent implements MouseListener,
 //	}
 	
 	public CamembertView(ModelAdapter mAdapter) {
+		
 		model = mAdapter.getModel();
 		startingAngle = 0.0;
 	
@@ -120,7 +126,7 @@ public class CamembertView extends JComponent implements MouseListener,
 		setSize(600, 600);
 
 		buildGraphics();
-
+		addMouseListener(this);
 	}
 
 	// build the Arc2D (the pieces of pie)
@@ -155,6 +161,7 @@ public class CamembertView extends JComponent implements MouseListener,
 		// create non-selected arcs
 		arcs.clear();
 		double angle = startingAngle;
+		
 		for (int i = 0; i < model.size(); i++) {
 
 			Arc2D arc = new Arc2D.Double(pieCenter.getX() - pieSize.width / 2,
@@ -196,7 +203,7 @@ public class CamembertView extends JComponent implements MouseListener,
 	}
 
 	public void setController(ICamembertController c) {
-		controller = c;
+		this.controller = c;
 	}
 
 	// deselect all pieces
@@ -725,6 +732,7 @@ public class CamembertView extends JComponent implements MouseListener,
 		} else {
 
 			for (int i = 0; i < arcs.size(); i++) {
+				
 				if (arcs.get(i).contains(arg0.getX(), arg0.getY())
 						&& !emptyCenter.contains(arg0.getX(), arg0.getY())) {
 					controller.selectPie(i);
@@ -733,19 +741,19 @@ public class CamembertView extends JComponent implements MouseListener,
 		}
 
 		if (previous.contains(arg0.getX(), arg0.getY())) {
+			
 			controller.nextPie();
 		}
 
 		if (next.contains(arg0.getX(), arg0.getY())) {
 			controller.previousPie();
 		}
-
+		repaint();
 	}
 
 	
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-
 	}
 
 	
@@ -798,7 +806,7 @@ public class CamembertView extends JComponent implements MouseListener,
 
 	
 	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
+		
 
 		buildGraphics();
 		paint(getGraphics());

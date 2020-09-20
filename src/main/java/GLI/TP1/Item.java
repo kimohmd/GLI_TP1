@@ -6,6 +6,13 @@ public class Item {
 	private String desciption;
 	private Double value;
 	
+	public Item(String t, String d, Double v) {
+		
+		this.title = t;
+		this.desciption = d;
+		this.value = v;
+	}
+	
 	public String getTitle() {
 		return title;
 	}

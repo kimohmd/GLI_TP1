@@ -7,6 +7,9 @@ public void setSelectedPie(int p);
 public Boolean isSelected();
 public void deSelect();
 public void selectPie(int i);
-public int nextPie();
-public int previousPie();
+public void nextPie();
+public void previousPie();
+public ICamembertView getView();
+public void setView(ICamembertView view);
+
 }
